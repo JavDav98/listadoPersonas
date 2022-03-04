@@ -1,9 +1,4 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div>
-        <p class="fw-bold">No.{{indice+1}} {{persona.nombre}} {{persona.apellido}}</p>
-      </div>
-    </div>
-  </div>
+<div class="item">
+  <input type="checkbox" (click)="emitirSaludo()">
+  <p>No.{{indice+1}} {{persona.nombre}} {{persona.apellido}}</p>
 </div>
