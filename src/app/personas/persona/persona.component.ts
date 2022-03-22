@@ -13,6 +13,6 @@ export class PersonaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
 
+  }
 }
