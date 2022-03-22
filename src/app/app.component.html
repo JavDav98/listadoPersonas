@@ -1,12 +1,6 @@
+<span class="ion ion-md-attach"></span>
 <div class="box" id="heading">
   <h1>{{titulo}}</h1>
 </div>
-<!--  <app-formulario (personaCreada)="personaAgregada($event)"></app-formulario>-->
-<div class="box">
-  <app-persona *ngFor="let p of personas; let i = index" [persona]="p" [indice]="i"></app-persona>
-</div>
 
-<div class="box">
-  <app-formulario></app-formulario>
-</div>
-
+<router-outlet></router-outlet>

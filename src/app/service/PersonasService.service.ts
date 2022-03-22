@@ -20,4 +20,18 @@ export class PersonaService{
     this.loggingService.enviaMensajeConsola("Agregar Persona "+p.nombre)
     this.personas.push(p);
   }
+
+  encontrarPersona(index: number){
+    return this.personas[index];
+  }
+
+  modPersona(index: number, persona: Persona){
+    let p = this.personas[index];
+    p.nombre = persona.nombre;
+    p.apellido = persona.apellido;
+  }
+
+  eliminarPersona(index: number){
+    this.personas.splice(index, 1)
+  }
 }

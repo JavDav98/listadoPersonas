@@ -1,0 +1,20 @@
+<!--
+<div class="item">
+  <ul>
+    <li>
+        <p>{{persona.nombre}} {{persona.apellido}}</p>
+    </li>
+  </ul>
+</div>
+-->
+
+<div class="item">
+  <ul>
+    <li>
+        <a [routerLink]="['/personas', indice]"
+           [queryParams]="{modoEdicion: '1'}">
+          {{ persona.nombre }} {{ persona.apellido }}
+        </a>
+    </li>
+  </ul>
+</div>
