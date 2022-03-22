@@ -11,6 +11,7 @@ import {PersonaService} from "./service/PersonasService.service";
 import { PersonasComponent } from './personas/personas.component';
 import { IonicModule } from '@ionic/angular';
 import { ErrorComponent } from './error/error.component';
+import { HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ErrorComponent } from './error/error.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    HttpClientModule
   ],
   providers: [LoggingService,
               PersonaService],

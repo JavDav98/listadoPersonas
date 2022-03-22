@@ -67,6 +67,7 @@ export class FormularioComponent implements OnInit{
     }else{
       alert('Datos no disponibles');
     }
+
     this.router.navigate(['personas']);
   }
 

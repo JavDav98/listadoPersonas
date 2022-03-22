@@ -16,7 +16,15 @@ export class PersonasComponent implements OnInit {
               private router: Router){ }
 
   ngOnInit(): void {
-    this.personas = this.personaService.personas;
+    // this.personas = this.personaService.personas;
+    this.personaService.obtenerPersonas()
+      .subscribe(
+        (personass: any) => {
+          this.personas = personass;
+          this.personaService.setPersonas(personass);
+        },
+        error => console.log("Error al guardar personas" + error)
+      );
   }
 
   agregar(){
