@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    firebase.initializeApp({
+      apiKey: "AIzaSyAbhVIlfR2_NU56l7bDN0TWepc0jtq9xlA",
+      authDomain: "listadopersonas-c3253.firebaseapp.com"
+    })
   }
-
-  /*  personaAgregada( p: Persona){
-      this.personaService.agregarPersona(p);
-    }*/
 
 }
