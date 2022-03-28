@@ -2,11 +2,13 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Auth, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LoginService{
   token: string;
   auth: Auth;
-  user: any;
+
   constructor(private router:Router){}
 
   login(email: string, password: string){
@@ -15,9 +17,10 @@ export class LoginService{
       .then((response) => {
         // Signed in
         response.user.getIdToken().then(
-          token=>{
+          (token) => {
             this.token = token;
             console.log("Token obtenido --- "+token);
+            this.router.navigate(['/']);
           })
       })
       .catch((error) => {

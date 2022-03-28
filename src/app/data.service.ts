@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Persona} from "../models/Persona.model";
+import {LoginService} from "./login/login.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private  loginService: LoginService) { }
   url: string = 'https://listadopersonas-c3253-default-rtdb.firebaseio.com/datos';
   /*Guardar Personas*/
   guardarPersonas(personas: Persona[]){
@@ -30,7 +31,8 @@ export class DataService {
   }
 
   cargarPersonas(){
-    return this.httpClient.get(`${this.url}.json`);
+    const token = this.loginService.getIdToken();
+    return this.httpClient.get(`${this.url}.json?auth=${token}`);
   }
 
   eliminarPersona(index: number){

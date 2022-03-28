@@ -28,7 +28,8 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     AppRoutingModule,
     IonicModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [LoggingService,
               PersonaService],
