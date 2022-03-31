@@ -13,6 +13,8 @@ import { IonicModule } from '@ionic/angular';
 import { ErrorComponent } from './error/error.component';
 import { HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
+import {GuardianService} from './login/guardian.service';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { LoginComponent } from './login/login.component';
 
   ],
   providers: [LoggingService,
-              PersonaService],
+              PersonaService,
+              GuardianService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

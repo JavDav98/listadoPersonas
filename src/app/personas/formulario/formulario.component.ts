@@ -12,8 +12,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class FormularioComponent implements OnInit{
 
   @Output() personaCreada = new EventEmitter<Persona>();
-/*  @ViewChild('nombreInput') nombreI: ElementRef;
-  @ViewChild('apellidoInput')apellidoI: ElementRef;*/
   nombreInput: string;
   apellidoInput: string;
   index: number;
@@ -33,32 +31,28 @@ export class FormularioComponent implements OnInit{
     this.edit = +this.route.snapshot.queryParams['modoEdicion'];
     if (this.edit != null && this.edit === 1 ) {
         let persona: Persona = this.personaService.encontrarPersona(this.index);
-        this.nombreInput = persona.nombre;
-        this.apellidoInput = persona.apellido;
+        if (persona != null){
+          this.nombreInput = persona.nombre;
+          this.apellidoInput = persona.apellido;
+        }
     }
    }
 
 
 
- guardarPersona(/*nombre: HTMLInputElement, apellido: HTMLInputElement*/){
-    let p = new Persona(/*nombre.value, apellido.value*/this.nombreInput, this.apellidoInput);
-    // this.personas.push(p);
-    //this.personaCreada.emit(p);
-
-    /*let p1 = new Persona(
-      this.nombreI.nativeElement.value,
-      this.apellidoI.nativeElement.value + " @ViewChild",
-    );
-    this.personaService.agregarPersona(p1);*/
-    //this.personaCreada.emit(p1);
-    // this.loggingService.enviaMensajeConsola("enviamos mensaje");
-
-    if (this.edit != null && this.edit === 1 ){
-      this.personaService.modPersona(this.index, p);
+ guardarPersona(){
+    if (this.nombreInput != null && this.apellidoInput != null){
+      let p = new Persona(this.nombreInput, this.apellidoInput);
+      if (this.edit != null && this.edit === 1 ){
+        this.personaService.modPersona(this.index, p);
+        this.router.navigate(['personas']);
+      }else{
+        this.personaService.agregarPersona(p);
+        this.router.navigate(['personas']);
+      }
     }else{
-      this.personaService.agregarPersona(p);
+      return;
     }
-    this.router.navigate(['personas']);
   }
 
   deletePersona(){

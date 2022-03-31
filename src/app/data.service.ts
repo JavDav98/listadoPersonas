@@ -12,7 +12,8 @@ export class DataService {
   url: string = 'https://listadopersonas-c3253-default-rtdb.firebaseio.com/datos';
   /*Guardar Personas*/
   guardarPersonas(personas: Persona[]){
-    this.httpClient.put(`${this.url}.json`, personas)
+    const token = this.loginService.getIdToken();
+    this.httpClient.put(`${this.url}.json?auth=${token}`, personas)
       .subscribe(
         responde => {
           console.log("resultado de guardar las personas" + responde)
@@ -22,7 +23,8 @@ export class DataService {
   }
 
   modificarPersona(index: number, persona: Persona){
-    let url: string = `${this.url}/${index}/.json`
+    const token = this.loginService.getIdToken();
+    let url: string = `${this.url}/${index}/.json?auth=${token}`
     this.httpClient.put(url, persona)
       .subscribe(
         response => console.log("Resultado de modificar el objeto Persona" + response),
@@ -36,7 +38,8 @@ export class DataService {
   }
 
   eliminarPersona(index: number){
-    return this.httpClient.delete( `${this.url}/${index}/.json`)
+    const token = this.loginService.getIdToken();
+    return this.httpClient.delete( `${this.url}/${index}/.json?auth=${token}`)
       .subscribe(
         response => console.log("Resultado de elimiar el objeto Persona" + response),
         error => console.log("Ha ocurrido un error en la eliminación" + error)

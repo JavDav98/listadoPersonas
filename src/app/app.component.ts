@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import firebase from 'firebase/compat/app';
+import {LoginService} from "./login/login.service";
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
     }
   };
 
-  constructor() {
+  constructor(private loginService: LoginService) {
   }
 
   ngOnInit() {
@@ -35,6 +36,14 @@ export class AppComponent implements OnInit {
       appId: "1:403623206797:web:98e8caf33bf5218d3967c4",
       measurementId: "G-VXYWWZYBQH"
     })
+  }
+
+  salir(){
+    this.loginService.logOut();
+  }
+
+  isAutentiquete(){
+    return this.loginService.isAutentiquete();
   }
 
 }

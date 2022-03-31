@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Auth, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import firebase from "firebase/compat/app";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService{
-  token: string;
+  token: any;
   auth: Auth;
 
   constructor(private router:Router){}
@@ -31,5 +32,16 @@ export class LoginService{
 
   getIdToken(){
     return this.token;
+  }
+
+  isAutentiquete(){
+    return this.token != null;
+  }
+
+  logOut(){
+    getAuth().signOut().then( () => {
+      this.token = null;
+      this.router.navigate(['login']);
+    }).catch(error => console.log('Ocurrio un error: ' + error))
   }
 }

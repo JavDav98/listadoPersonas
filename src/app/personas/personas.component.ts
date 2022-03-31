@@ -28,7 +28,7 @@ export class PersonasComponent implements OnInit {
   }
 
   agregar(){
-    this.router.navigate(['personas/agregar']);
+    this.router.navigate(['personas/agregar'], {queryParams:{modoEdicion:0}});
   }
 
 }
